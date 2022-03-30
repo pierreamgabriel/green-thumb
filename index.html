@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Front End Test - Greenthumb</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="This is my front-end test for a job at Red Ventures Brasil." />
+    <link rel="stylesheet" href="./index.scss" />
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+    <div class="home-header" id="header">
+        <div class="column1">
+            <p class="smalltitle">green thumb.</p>
+            <p class="bigtitle">Find your next green friend</p>
+            <p class="arrowdown"><img src="images/icons/arrow-down.svg" alt="arrow down" /></p>
+        </div>
+        <div class="column2"></div>
+    </div>
+    <div class="home-options">
+        <div class="columns">
+            <img class="icons" src="images/illustrations/sun.png" alt="sun icon" />
+            <p class="instructions"><span>1. </span>Set the amount of <span>sunlight</span> your plant will get.</p>
+            <select class="selectoption" id="sun">
+                <option value="" disabled selected>Select</option>
+                <option value="no">no</option>
+                <option value="low">low</option>
+                <option value="high">high</option>
+              </select>
+        </div>
+        <div class="columns">
+            <img class="icons" src="images/illustrations/wateringcan.png" alt="watering can icon" />
+            <p class="instructions"><span>2. </span>How often do you want to <span>water</span> your plant?</p>
+            <select class="selectoption" id="water">
+                <option value="" disabled selected>Select</option>
+                <option value="regularly">regularly</option>
+                <option value="daily">daily</option>
+                <option value="rarely">rarely</option>
+              </select>
+        </div>
+        <div class="columns">
+            <img class="icons" src="images/illustrations/dog.png" alt="dog icon" /> 
+            <p class="instructions"><span>3. </span>Do you have pets? Do they <span>chew</span> plants?</p>
+            <select class="selectoption" id="pet">
+                <option value="" disabled selected>Select</option>
+                <option value="true">true</option>
+                <option value="false">false</option>
+              </select>
+        </div>
+    </div>
+    <div class="home-results" id="homeresultsdiv">
+        <div class="columns" id="beforeapi1">
+            <p class="title" id="resultstatus">No results yet...</p>
+            <p class="text">Use the filters above to find the plant that best fits your environment :)</p>
+        </div>
+        <div class="columns column2 " id="beforeapi2">
+            <img class="noresultsimg" src="images/illustrations/no-results.png" alt="no results" />
+        </div>
+        <div class="resultstop" id="resultstopdiv"></div>
+        <div class="wrapper" id="resultsdiv"></div>
+        <div class="backtop" id="backtopdiv"><span><img src="images/icons/arrow-up.svg" alt="arrow up">&nbsp;&nbsp;&nbsp;<a
+            href="#header">back to the top</a></span></div>
+    </div>
+</body>
+
+</html>

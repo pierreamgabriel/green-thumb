@@ -1,0 +1,24 @@
+{
+    "name": "projeto-red-ventures",
+    "version": "1.0.0",
+    "description": "Este é meu projeto para o teste técnico da vaga de front-end na Red Ventures Brasil.",
+    "main": "index.html",
+    "scripts": {
+        "start": "parcel index.html --open",
+        "build": "parcel build index.html",
+        "deploy": "npm run build && surge ./dist"
+    },
+    "staticFiles": {
+        "staticPath": "images",
+        "watcherGlob": "**"
+    },
+    "dependencies": {
+        "parcel": "1.12.3",
+        "surge": "^0.23.0"
+    },
+    "devDependencies": {
+        "parcel-plugin-static-files-copy": "^2.6.0",
+        "sass": "^1.43.3"
+    },
+    "keywords": []
+}

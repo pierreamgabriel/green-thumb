@@ -1,0 +1,336 @@
+@import "settings";
+
+body {
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: white;
+    font-size: 1rem;
+    font-family: "Monsterrat", sans-serif;
+}
+
+/*--------------------------------------------------------------
+Home Page Header:
+----------------------------------------------------------------*/
+.home-header {
+    width: 100%;
+    background-color: #75bc97;
+    display: flex;
+    background-image: url(images/hero/desktop/left-leaves.png), url(images/hero/desktop/plantperson.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left, bottom 49% right 27%;
+    background-size: 60% 100%, 23% 80%;
+    margin: auto;
+    > .column1 {
+        width: 80%;
+        color: white;
+        > .smalltitle {
+            font-size: 1.9rem;
+            margin: $headerTextMargin;
+        }
+        > .bigtitle {
+            font-size: 4.5rem;
+            margin: $headerTextMargin;
+            font-weight: bold;
+            max-width: 450px;
+        }
+        > .arrowdown {
+            margin: 1% 0 4% 26%;
+        }
+    }
+    > .column2 {
+        width: 26%;
+        background-image: url(images/hero/desktop/right-leaves.png);
+        background-repeat: no-repeat;
+        background-size: 102% 100%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .home-header {
+        height: 593px;
+        background-image: url(images/hero/mobile/mobile-leaves.png), url(images/hero/mobile/mobile-plantperson.png);
+        background-position: top, bottom;
+        background-size: 100% 70%, 45% 45%;
+        > .column1 {
+            width: 100%;
+            > .smalltitle {
+                margin: $headerTextMarginMobile;
+            }
+            > .bigtitle {
+                max-width: 70%;
+                margin: $headerTextMarginMobile;
+            }
+            @media only screen and (max-width: 537px) {
+                > .bigtitle {
+                    max-width: 80%;
+                }
+            }
+            > .arrowdown {
+                margin: 1% 0 4% 10%;
+            }
+        }
+        > .column2 {
+            display: none;
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+Home Page Options:
+----------------------------------------------------------------*/
+.home-options {
+    width: 100%;
+    padding: 35px 0 35px 0;
+    display: flex;
+    justify-content: center;
+    > .columns {
+        width: 20%;
+        padding-left: 20px;
+        > .icons {
+            height: 70px;
+        }
+        > .instructions {
+            width: 85%;
+            min-height: 75px;
+            line-height: $lineHeight;
+            color: $optionsColor;
+            > span {
+                font-weight: bold;
+            }
+        }
+        @media only screen and (max-width: 760px) {
+            > .instructions {
+                min-height: 100px;
+            }
+        }
+        > .selectoption {
+            box-sizing: border-box;
+            border-radius: 19px;
+            border-color: #ccc;
+            outline: none;
+            width: 85%;
+            height: 40px;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: $optionsColor;
+        }
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .home-options {
+        flex-flow: column wrap;
+        padding: 35px 30px 35px 30px;
+        > .columns {
+            width: 100%;
+            padding-bottom: 45px;
+            > .instructions {
+                width: 220px;
+                min-height: 65px;
+            }
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+Home Page Results:
+----------------------------------------------------------------*/
+.home-results {
+    background-color: #f2f2f2;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+    > .columns {
+        width: 30%;
+        color: #a9a9a9;
+        > .title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0 20px 0;
+        }
+        > .text {
+            line-height: $lineHeight;
+            width: 220px;
+        }
+        > .noresultsimg {
+            margin-left: 75px;
+        }
+    }
+    > .resultstop {
+        display: none;
+        max-width: 924px;
+        width: 100%;
+        margin: 0 auto;
+        > .picksymbol {
+            width: 158px;
+        }
+        > .ourpicks {
+            color: black;
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+    }
+    > .wrapper {
+        display: none;
+        grid-template-columns: repeat(4, 25%);
+        grid-auto-rows: 280px;
+        grid-gap: 10px;
+        max-width: 924px;
+        width: 100%;
+        margin: 0 auto;
+        > .bigdiv {
+            grid-row: 1 / 3;
+            grid-column: 1 / 3;
+            background-color: white;
+            padding-top: 40px;
+            height: 528px;
+            position: relative;
+            > .staff {
+                background-color: #75bc97;
+                height: 43px;
+                width: 189px;
+                color: white;
+                padding: 10px 0 0 20px;
+                border-top-right-radius: 19px;
+                border-bottom-right-radius: 19px;
+                font-weight: bold;
+            }
+            > .imagediv {
+                text-align: center;
+                > .bigimage {
+                    max-height: 345px;
+                }
+                @media only screen and (max-width: 800px) {
+                    > .bigimage {
+                        max-width: 90%;
+                        max-height: 161px;
+                    }
+                }
+            }
+            > .bottom {
+                display: flex;
+                position: absolute;
+                bottom: 0;
+                margin-bottom: 10px;
+                width: 100%;
+                > .name {
+                    width: 50%;
+                    color: $resultsColor;
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    padding-left: 15px;
+                }
+                @media only screen and (max-width: 800px) {
+                    > .name {
+                        font-size: 1rem;
+                    }
+                }
+                > .icons {
+                    text-align: right;
+                    width: 50%;
+                    padding-right: 15px;
+                    > .price {
+                        font-size: 2rem;
+                        font-weight: bold;
+                        color: $resultsColor;
+                        margin-top: 0;
+                    }
+                    @media only screen and (max-width: 800px) {
+                        > .price {
+                            font-size: 1rem;
+                        }
+                    }
+                    > .iconsvg {
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+        > .smalldiv {
+            background-color: white;
+            padding-top: 20px;
+            position: relative;
+            > .image {
+                justify-content: center;
+                text-align: center;
+                > .smallimage {
+                    max-width: 90%;
+                    max-height: 161px;
+                }
+            }
+            > .name {
+                font-size: 1rem;
+                color: $resultsColor;
+                font-weight: bold;
+                margin-left: 15px;
+                position: absolute;
+                bottom: 30px;
+            }
+            > .bottom {
+                display: flex;
+                position: absolute;
+                bottom: 0;
+                margin-bottom: 10px;
+                width: 100%;
+                > .price {
+                    width: 50%;
+                    padding-left: 15px;
+                    color: $resultsColor;
+                    font-weight: bold;
+                    font-size: 1rem;
+                }
+                > .icons {
+                    width: 50%;
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 800px) {
+        > .wrapper {
+            grid-template-columns: repeat(4, 300px);
+            grid-auto-rows: 300px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            max-width: 100%;
+            > .bigdiv {
+                height: 300px;
+                min-width: 280px;
+            }
+            > .smalldiv {
+                min-width: 280px;
+            }
+        }
+    }
+    > .backtop {
+        display: none;
+        max-width: 924px;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 19px;
+        border: 1px solid #15573f;
+        text-align: center;
+        margin-top: 40px;
+        padding: 8px 0 8px 0;
+        > span a {
+            text-decoration: none;
+            color: $resultsColor;
+        }
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .home-results {
+        flex-flow: column wrap;
+        > .columns {
+            width: 50%;
+            margin: 0 auto;
+            > .noresultsimg {
+                margin: 30px 0 0 0;
+            }
+        }
+        > .column2 {
+            text-align: center;
+        }
+    }
+}
