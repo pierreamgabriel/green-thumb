@@ -34,6 +34,64 @@ function resetValues() {
     pet = "";
 }
 
+function createHTML(data) {
+    let items;
+    const favorite = data.filter(item => item.staff_favorite) || [];
+    let firstItem;
+
+    if (favorite.length > 0) {
+        firstItem = favorite;
+        items = data.filter(item => !item.staff_favorite);
+    } else {
+        firstItem = data[0];
+        items = data.slice(1);
+    }
+
+    const petIcon = (arg) => {
+        let toxic = "toxic";
+        if (!arg) {
+            toxic = "pet";
+        }  
+        return toxic;              
+    }
+    
+    const resultsDiv = document.getElementById('resultsdiv');
+    resultsDiv.innerHTML += 
+    `<div class="bigdiv">
+    ${firstItem[0].staff_favorite ? `<div class="staff">✨ Staff favorite</div>` : ``}
+    <div class="imagediv">
+    <img src="${firstItem[0].url}" alt="${firstItem[0].name}" class="bigimage" />
+    </div>
+    <div class="bottom">
+    <div class="name">${firstItem[0].name}</div>
+    <div class="icons">
+    <p class="price">$${firstItem[0].price}</p>
+    <img src="icons/${petIcon(firstItem[0].toxicity)}.svg" class="iconsvg" />
+    <img src="icons/${firstItem[0].sun}.svg" class="iconsvg"/>
+    <img src="icons/${firstItem[0].water}.svg" />
+    </div>
+    </div>
+    </div>`;
+
+    items.map((item) => {
+    let toxic = petIcon(item.toxicity);
+    resultsDiv.innerHTML += `<div class="smalldiv">
+    <div class="image">
+    <img src="${item.url}" alt="${item.name}" class="smallimage" />
+    </div>  
+    <p class="name">${item.name}</p>
+    <div class="bottom">
+    <div class="price">$${item.price}</div>
+    <div class="icons">
+    <img src="icons/${toxic}.svg" class="iconsvg" />
+    <img src="icons/${item.sun}.svg" class="iconsvg"/>
+    <img src="icons/${item.water}.svg" />
+    </div>
+    </div>  
+    </div>`;
+    });                  
+}
+
 document.addEventListener('input', function (event) {
 
     switch (event.target.id) {
@@ -62,13 +120,8 @@ document.addEventListener('input', function (event) {
                     document.getElementById("homeresultsdiv").style.display = "flex";
                     document.getElementById("backtopdiv").style.display = "none";
                     resetValues();
-                    return;
                 } else {
                     results = true;
-                    let petIcon = "pet";
-                    if (data[0].toxicity == true) {
-                        petIcon = "toxic";
-                    }
 
                     // Reset values
                     resetValues();
@@ -91,42 +144,7 @@ document.addEventListener('input', function (event) {
                     <p class="ourpicks">Our picks for you</p>`
 
                     // Start creating content with API data
-                    let resultsDiv = document.getElementById('resultsdiv');
-                    resultsDiv.innerHTML += `<div class="bigdiv">
-                    <div class="staff">✨ Staff favorite</div>
-                    <div class="imagediv">
-                    <img src="${data[0].url}" alt="${data[0].name}" class="bigimage" />
-                    </div>
-                    <div class="bottom">
-                    <div class="name">${data[0].name}</div>
-                    <div class="icons">
-                    <p class="price">$${data[0].price}</p>
-                    <img src="icons/${petIcon}.svg" class="iconsvg" />
-                    <img src="icons/${data[0].sun}.svg" class="iconsvg"/>
-                    <img src="icons/${data[0].water}.svg" />
-                    </div>
-                    </div>
-                    </div>`;
-                    data.slice(1).map((item) => {
-                        let toxic = "toxic";
-                        if (item.toxicity == false) {
-                            toxic = "pet";
-                        }
-                        resultsDiv.innerHTML += `<div class="smalldiv">
-                        <div class="image">
-                        <img src="${item.url}" alt="${item.name}" class="smallimage" />
-                        </div>  
-                        <p class="name">${item.name}</p>
-                        <div class="bottom">
-                        <div class="price">$${item.price}</div>
-                        <div class="icons">
-                        <img src="icons/${toxic}.svg" class="iconsvg" />
-                        <img src="icons/${item.sun}.svg" class="iconsvg"/>
-                        <img src="icons/${item.water}.svg" />
-                        </div>
-                        </div>  
-                        </div>`;
-                    });
+                    createHTML(data);
                 }
             });
     }
